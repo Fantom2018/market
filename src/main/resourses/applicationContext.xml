@@ -7,9 +7,18 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="kz.faiz.sell.TestBean">
-        <constructor-arg value="Bayer"/>
+    <context:property-placeholder location="classpath*:musicPlaeyr.properties"/>
+
+    <bean id="musicBean"
+          class="kz.faiz.sell.RockMusic">
+    </bean>
+    <bean id="musicPlayer"
+        class="kz.faiz.sell.MusicPlayer">
+        <property name="music" ref="musicBean"/>
+
+        <property name="name" value="${musicPlayer.name}" />
+        <property name="volume" value="${musicPlayer.volume}"/>
+
     </bean>
 
 </beans>
